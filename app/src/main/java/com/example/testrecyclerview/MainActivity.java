@@ -3,13 +3,18 @@ package com.example.testrecyclerview;
 import static androidx.core.content.ContentProviderCompat.requireContext;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 
 import com.example.testrecyclerview.adapter.ExampleAdapter;
+import com.example.testrecyclerview.adapter.ExampleViewPagerAdapter;
 import com.example.testrecyclerview.model.ExampleItem;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.stream.Collectors;
 
@@ -20,14 +25,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RecyclerView friendsRV = findViewById(R.id.rv_example);
-        friendsRV.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+        TabLayout tl = findViewById(R.id.tl_example);
+        ViewPager vp = findViewById(R.id.vp_example);
 
-        ExampleAdapter friendAdapter = new ExampleAdapter();
+        ExampleViewPagerAdapter adapter = new ExampleViewPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
 
-        friendAdapter.Add(new ExampleItem("Gugugaga", 1509));
-        friendAdapter.Add(new ExampleItem("Privet vsem", 7777));
+        adapter.addFragment(new FirstFragment(), "Первая");
+        adapter.addFragment(new SecondFragment(), "Вторая");
 
-        friendsRV.setAdapter(friendAdapter);
+        vp.setAdapter(adapter);
+
+        tl.setupWithViewPager(vp);
     }
 }
