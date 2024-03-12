@@ -13,17 +13,20 @@ import android.os.Bundle;
 
 import com.example.testrecyclerview.adapter.ExampleAdapter;
 import com.example.testrecyclerview.adapter.ExampleViewPagerAdapter;
+import com.example.testrecyclerview.api.ServerApi;
 import com.example.testrecyclerview.model.ExampleItem;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity {
-
+    public static ServerApi serverApi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        serverApi = new ServerApi();
 
         TabLayout tl = findViewById(R.id.tl_example);
         ViewPager vp = findViewById(R.id.vp_example);

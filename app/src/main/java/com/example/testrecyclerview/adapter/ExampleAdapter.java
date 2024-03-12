@@ -52,4 +52,9 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
         list.add(exampleItem);
         notifyDataSetChanged();
     }
+
+    public void Clear(){
+        list.clear();
+        notifyDataSetChanged();
+    }
 }
