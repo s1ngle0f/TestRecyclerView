@@ -48,6 +48,8 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
         }
     }
 
+
+
     public void Add(ExampleItem exampleItem){
         list.add(exampleItem);
         notifyDataSetChanged();

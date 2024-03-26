@@ -16,7 +16,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServerApi {
-    private static final String BASE_URL = "http://localhost";
+    private static final String BASE_URL = "http://127.0.0.1:8080";
     OkHttpClient client;
     Retrofit retrofit;
     IServerApi serverApi;
@@ -28,7 +28,7 @@ public class ServerApi {
                     public Response intercept(Chain chain) throws IOException {
                         Request request = chain.request()
                                 .newBuilder()
-//                                .addHeader("Authorization", "Bearer " + jwt)
+//                                .addHeader("Authorization", "Bearer ")
                                 .build();
                         return chain.proceed(request);
                     }
@@ -36,7 +36,7 @@ public class ServerApi {
                 .build();
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .client(client)
+//                .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         serverApi = retrofit.create(IServerApi.class);

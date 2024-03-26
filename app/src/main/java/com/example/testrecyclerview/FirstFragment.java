@@ -45,20 +45,20 @@ public class FirstFragment extends Fragment {
 //        friendAdapter.Add(new ExampleItem("Gugugaga", 1509));
 //        friendAdapter.Add(new ExampleItem("Privet vsem", 7777));
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                List<ExampleItem> items = MainActivity.serverApi.getAllItems();
-                getActivity().runOnUiThread(
-                        () -> {
-                            friendAdapter.Clear();
-                            for (ExampleItem item : items) {
-                                friendAdapter.Add(item);
-                            }
-                        }
-                );
-            }
-        }).start();
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                List<ExampleItem> items = MainActivity.serverApi.getAllItems();
+//                getActivity().runOnUiThread(
+//                        () -> {
+//                            friendAdapter.Clear();
+//                            for (ExampleItem item : items) {
+//                                friendAdapter.Add(item);
+//                            }
+//                        }
+//                );
+//            }
+//        }).start();
         friendsRV.setAdapter(friendAdapter);
         return root;
     }
