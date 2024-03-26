@@ -37,10 +37,10 @@ public class MainActivity extends AppCompatActivity {
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
             channel.setDescription(description);
 
-            // Регистрация канала уведомлений в системе
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
+        Notificator.scheduleNotification(getApplicationContext());
 
         serverApi = new ServerApi();
 
